@@ -5,17 +5,16 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Bakery.Models;
-using Microsoft.AspNetCore.Identity;
 
 namespace Bakery
 {
   public class Startup
   {
-    public Startup(IWebHostEnviroment env)
+    public Startup(IWebHostEnvironment env)
     {
       var builder = new ConfigurationBuilder()
-        .SetBasePath(env.ContentRootPath)
-        .AddJsonFile("appsettings.json");
+          .SetBasePath(env.ContentRootPath)
+          .AddJsonFile("appsettings.json");
       Configuration = builder.Build();
     }
 
@@ -35,14 +34,14 @@ namespace Bakery
       app.UseDeveloperExceptionPage();
       app.UseRouting();
 
-      app.UseEndPoints(routes => 
+      app.UseEndpoints(routes =>
       {
         routes.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
       });
 
       app.UseStaticFiles();
-
-      app.Run(async(context) => 
+      
+      app.Run(async (context) =>
       {
         await context.Response.WriteAsync("Hello World!");
       });
