@@ -27,7 +27,7 @@ namespace Bakery
 
       services.AddEntityFrameworkMySql()
         .AddDbContext<BakeryContext>(options => options
-        .UseMySql(Configuration["ConnectionString:DefaultConnection"], ServerVersion.AutoDetect(Configuration["ConnectionStrings:DefaultConnection"])));
+        .UseMySql(Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(Configuration["ConnectionStrings:DefaultConnection"])));
     }
 
     public void Configure(IApplicationBuilder app)
