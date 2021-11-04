@@ -17,6 +17,8 @@ namespace Bakery.Models
         var builder = new DbContextOptionsBuilder<BakeryContext>();
 
         builder.UseMySql(configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(configuration["ConnectionStrings:DefaultConnection"]));
+
+        return new BakeryContext(builder.Options);
     }
   }
 }
