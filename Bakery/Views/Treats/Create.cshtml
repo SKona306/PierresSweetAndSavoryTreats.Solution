@@ -1,0 +1,26 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Bakery.Models.Treat
+
+<h2>Add a Treats below:</h2>
+
+<hr/>
+
+@using(Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Name)
+  @Html.TextBoxFor(model => model.Name, 
+  new {required = "required"})
+
+  @Html.LabelFor(model => model.Description)
+  @Html.TextBoxFor(model => model.Description, 
+  new {required = "required"})
+
+  <input type="submit" value="Add Treat!"/>
+}
+
+<button>@Html.ActionLink("Home", "Index", "Home")</button>
+<button>@Html.ActionLink("Back to Treats", "Index")</button>
+<button>@Html.ActionLink("Flavors List", "Index", "Flavors")</button>
