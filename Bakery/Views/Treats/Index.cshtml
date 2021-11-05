@@ -1,0 +1,23 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Bakery.Models
+@model List<Bakery.Models.Treat>;
+
+<h1>Treats Menu:</h1>
+
+@if(@Model.Count == 0)
+{
+  <p>There are currently no treats on the menu.</p>
+}
+else 
+{
+  @foreach(Treat treat in Model)
+  {
+    <li>@Html.ActionLink($"{treat.Name}", "Details", new {id = treat.TreatId})</li>
+  }
+}
+  <button>@Html.ActionLink("Add a Treat", "Create")</button>
+  <button>@Html.ActionLink("Home", "Index", "Home")</button>
+  <button>@Html.ActionLink("See all Flavors", "Index", "Flavors")</button>
