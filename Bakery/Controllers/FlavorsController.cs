@@ -89,5 +89,14 @@ namespace Bakery.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    [HttpPost]
+    public ActionResult DeleteFlavor(int joinId)
+    {
+      var joinEntry = _db.Flavor_Treat.FirstOrDefault(entry => entry.Flavor_TreatId == joinId);
+      _db.Flavor_Treat.Remove(joinEntry);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
