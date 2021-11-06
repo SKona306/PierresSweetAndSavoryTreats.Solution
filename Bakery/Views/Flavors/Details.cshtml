@@ -1,0 +1,38 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Bakery.Models.Flavor
+
+<div class="container">
+  <h4>Flavor Details: @Html.DisplayFor(model => model.Name)</h4>
+  <p>Flavor Description: @Html.DisplayFor(model => model.Description)</p>
+  <hr/>
+
+  <h4>Treat's attatched to Flavor:</h4>
+  <ul>
+    @if(@Model.JoinEntities.Count == 0)
+    {
+      <li>There are no treats that use this flavor profile</li>
+      <button>@Html.ActionLink("Add Treat", "AddTreat", new { id = Model.FlavorId})</button>
+    }
+    else
+    {
+      @foreach(var join in Model.JoinEntities)
+      {
+        <li>@Html.ActionLink($"{join.Treat.Name}", "Details", "Treats", new { id = join.Treat.TreatId})</li>
+        @using(Html.BeginForm())
+        {
+          @Html.Hidden("joinId", @join.Flavor_TreatId)
+          <input type="submit" value="Delete Treat"/>
+        }
+      }
+    }
+    <button>@Html.ActionLink("Add Treat", "AddTreat", new { id = Model.FlavorId})</button>
+  </ul>
+
+  <hr/>
+
+  <button>@Html.ActionLink("Edit Flavor", "Edit", new { id = Model.FlavorId})</button>
+  <button>@Html.ActionLink("Delete Flavor", "Delete", new { id = Model.FlavorId})</button>
+</div>
