@@ -19,16 +19,16 @@
   }
   else
   {
-    @foreach(var join in Model.JoinEntities);
+    @foreach(var join in Model.JoinEntities)
     {
-      <li>@Html.ActionLink($"{join.Flavor.Name}", "Details", "Flavors" , new { id = join.Flavor.FlavorId})</li>
+      <li>@Html.ActionLink($"{join.Treat.Name}", "Details", "Flavors", new {id = join.Flavor.FlavorId})</li>
       @using(Html.BeginForm())
       {
         @Html.Hidden("joinId", @join.Flavor_TreatId)
-        <input type="submit" value="remove Flavor"/>
+        <input type="submit" value="delete flavor"/>
       }
     }
-    <button>@Html.ActionLink("Add flavor to treat", "AddFlavor", new { id = Model.FlavorId })</button>
+    <button>@Html.ActionLink("Add flavor to treat", "AddFlavor", new { id = Model.TreatId })</button>
   }
 </ul>
 
@@ -36,4 +36,4 @@
 <button>@Html.ActionLink("Home", "Index", "Home")</button>
 <button>@Html.ActionLink("Treats", "Index")</button>
 <button>@Html.ActionLink("Flavors", "Index", "Flavors")</button>
-<button>@Html.ActionLink("Delete Treat", Delegate, new { id = Model.TreatId})</button>
+<button>@Html.ActionLink("Delete Treat", "Delete", new { id = Model.TreatId})</button>
