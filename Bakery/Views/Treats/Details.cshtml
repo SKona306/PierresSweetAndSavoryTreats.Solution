@@ -22,7 +22,7 @@
   {
     @foreach(var join in Model.JoinEntities)
     {
-      <li>@Html.ActionLink($"{join.Treat.Name}", "Details", "Flavors", new {id = join.Flavor.FlavorId})</li>
+      <li>@Html.ActionLink($"{join.Flavor.Name}", "Details", "Flavors", new {id = join.Flavor.FlavorId})</li>
       @using(Html.BeginForm())
       {
         @Html.Hidden("joinId", @join.Flavor_TreatId)
