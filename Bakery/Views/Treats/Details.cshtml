@@ -16,6 +16,7 @@
   @if(@Model.JoinEntities.Count == 0)
   {
     <li>This Treat has no flavor profile</li>
+    <button>@Html.ActionLink("Add flavor to treat", "AddFlavor", new { id = Model.TreatId })</button>
   }
   else
   {
