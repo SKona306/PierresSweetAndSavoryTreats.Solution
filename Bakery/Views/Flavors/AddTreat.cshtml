@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Bakery.Models.Flavor
+
+<div class="container">
+  <h4>Attatch a Treat to @Html.DisplayFor(model => model.Name)</h4>
+  <p>To attach fill out form and save below:</p>
+
+  <hr/>
+
+  @using(Html.BeginForm())
+  {
+    @Html.HiddenFor(model => model.FlavorId)
+
+    @Html.Label("Select Treat")
+    @Html.DropDownList("TreatId")
+
+    <input type="submit" value="Attach Treat"/>
+  }
+</div>
