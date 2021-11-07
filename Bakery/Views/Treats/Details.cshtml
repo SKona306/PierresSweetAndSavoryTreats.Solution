@@ -16,7 +16,6 @@
   @if(@Model.JoinEntities.Count == 0)
   {
     <li>This Treat has no flavor profile</li>
-    <button>@Html.ActionLink("Add flavor to treat", "AddFlavor", new { id = Model.TreatId })</button>
   }
   else
   {
@@ -29,12 +28,8 @@
         <input type="submit" value="delete flavor"/>
       }
     }
-    <button>@Html.ActionLink("Add flavor to treat", "AddFlavor", new { id = Model.TreatId })</button>
   }
 </ul>
-
+<button>@Html.ActionLink("Add flavor to treat", "AddFlavor", new { id = Model.TreatId })</button>
 <button>@Html.ActionLink("Edit Treat", "Edit", new {id = Model.TreatId})</button>
-<button>@Html.ActionLink("Home", "Index", "Home")</button>
-<button>@Html.ActionLink("Treats", "Index")</button>
-<button>@Html.ActionLink("Flavors", "Index", "Flavors")</button>
 <button>@Html.ActionLink("Delete Treat", "Delete", new { id = Model.TreatId})</button>
